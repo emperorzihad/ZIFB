@@ -16,31 +16,59 @@ A = '\x1b[1;97m';R = '\x1b[38;5;196m';Y = '\033[1;33m';G = '\x1b[38;5;46m'
 def clear():os.system('clear');print(logo)
 def linex():print(f'{A}─────────────────────────────────────────────────')
 #──────────────{ NORMAL-UA-FOR-M8 }──────────────#
-ugen=[]
-for agent in range(10000):
-        aa='Mozilla/5.0 (Linux; Android 6.0.1;'
-        b=random.choice(['6','7','8','9','10','11','12'])
-        c='en-us; 10; T-Mobile myTouch 3G Slide Build/'
-        d=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
-        e=random.randrange(1, 999)
-        f=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
-        g='AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.99'
-        h=random.randrange(73,100)
-        i='0'
-        j=random.randrange(4200,4900)
-        k=random.randrange(40,150)
-        l='Mobile Safari/533.1'
-        fullagnt=(f'{aa} {b}; {c}{d}{e}{f}) {g}{h}.{i}.{j}.{k} {l}')
-        ugen.append(fullagnt)
-for xd in range(5000):
-    a='Nokia'
-    b=random.choice(['A','B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'])
-    c=random.randrange(1, 99)
-    d='/GoBrowser/'
-    e='1.6.0.'
-    f=random.randrange(1, 99)
-    uaku2=(f'{a}{b}{c}{d}{e}{f}')
-    ugen.append(uaku2)
+import random
+
+ugen = []
+
+ANDROID_VERSIONS = [
+    "8.0.0", "8.1.0",
+    "9", "10", "11", "12", "13"
+]
+
+CHROME_VERSIONS = [
+    "83.0.4103.106",
+    "84.0.4147.125",
+    "85.0.4183.127",
+    "86.0.4240.198",
+    "87.0.4280.141",
+    "88.0.4324.181",
+    "89.0.4389.105",
+    "90.0.4430.210",
+    "91.0.4472.164"
+]
+
+DEVICES = [
+    "SM-G960F",
+    "SM-G973F",
+    "SM-A505F",
+    "Redmi Note 8",
+    "Redmi 9",
+    "Pixel 3",
+    "Pixel 4",
+    "Nexus 5X"
+]
+
+def android_ua():
+    return (
+        f"Mozilla/5.0 (Linux; Android {random.choice(ANDROID_VERSIONS)}; "
+        f"{random.choice(DEVICES)}) "
+        f"AppleWebKit/537.36 (KHTML, like Gecko) "
+        f"Chrome/{random.choice(CHROME_VERSIONS)} "
+        f"Mobile Safari/537.36"
+    )
+
+def nokia_ua():
+    model = random.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    number = random.randint(1, 99)
+    build = random.randint(1, 99)
+    return f"Nokia{model}{number}/GoBrowser/1.6.0.{build}"
+
+for _ in range(10000):
+    ugen.append(android_ua())
+
+for _ in range(5000):
+    ugen.append(nokia_ua())
+
 #──────────────{ UA-FOR-RANDOM }──────────────#
 def fuckx():
 	model = random.choice(["CPH1931","CPH1803","CPH1909","CPH1901","PDBM00","CPH2083","CPH2269","CPH2477","CPH1903","CPH1901","CPH1905"])
@@ -749,3 +777,4 @@ def __GMAILX__(username,pswrd,total):
         pass
 #──────────────{ END }──────────────#
 menu()
+
